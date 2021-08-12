@@ -8,17 +8,17 @@ COQDOCFLAGS ?= \
 export COQDOCFLAGS
 COQMAKEFILE ?= Makefile.coq
 COQDOCJS_CP ?= false
-COQDOCJS_CUSTOM ?= $(EXTRA_DIR)/custom.js
+COQDOCJS_CUSTOM ?= $(EXTRA_DIR)/custom
 
 html: $(COQMAKEFILE)
 	@$(MAKE) -f $^ $@
 	ln -sf toc.html $@/index.html
 ifeq ($(COQDOCJS_CP),true)
 	cp -R $(EXTRA_DIR)/resources $@
-	cp $(COQDOCJS_CUSTOM) $@
+	cp -R $(COQDOCJS_CUSTOM) $@/custom
 else
 	ln -sf ../$(EXTRA_DIR)/resources $@
-	ln -sf ../$(COQDOCJS_CUSTOM) $@
+	ln -sf ../$(COQDOCJS_CUSTOM) $@/custom
 endif
 
 .PHONY: html
