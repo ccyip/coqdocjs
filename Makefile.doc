@@ -10,7 +10,8 @@ COQMAKEFILE ?= Makefile.coq
 COQDOCJS_CP ?= false
 
 html: $(COQMAKEFILE)
-	$(MAKE) -f $^ $@
+	@$(MAKE) -f $^ $@
+	ln -sf toc.html $@/index.html
 ifeq ($(COQDOCJS_CP),true)
 	cp -R $(EXTRA_DIR)/resources $@
 else
