@@ -5,7 +5,7 @@ function replace(s){
   var m;
   if (m = s.match(/^(.+)'/)) {
     return replace(m[1])+"'";
-  } else if (m = s.match(/^([A-Za-z]+)_?(\d+)$/)) {
+  } else if (m = s.match(/^(\p{L}+)_?(\d+)$/u)) {
     return replace(m[1])+m[2].replace(/\d/g, function(d){
       if (coqdocjs.subscr.hasOwnProperty(d)) {
         return coqdocjs.subscr[d];
