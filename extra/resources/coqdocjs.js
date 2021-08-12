@@ -179,6 +179,7 @@ function fixTitle(){
 }
 
 function postprocess(){
+  document.getElementById("project-page").href = coqdocjs.project_page;
   repairDom();
   replInTextNodes()
   replNodes();
